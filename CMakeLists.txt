@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 set(CMAKE_USER_MAKE_RULES_OVERRIDE ${CMAKE_SOURCE_DIR}/cmake/UserOverride.cmake)
 
 # We don't execute this if we have a tarball
+set(LFORTRAN_BUILD_ALL no) # REMOVE
 if (LFORTRAN_BUILD_ALL)
     find_program(BASH_BIN bash)
     execute_process(COMMAND "${BASH_BIN}" "-e" "build0.sh" WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} RESULT_VARIABLE _BUILD0_EXIT)
@@ -13,6 +14,10 @@ endif()
 
 file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/version" LFORTRAN_VERSION)
 string(REGEX MATCH "^[^-]*" LFORTRAN_NO_TAG_VERSION ${LFORTRAN_VERSION})
+
+message("LFortran version: ${LFORTRAN_VERSION}")
+message("LFortran no tag version: ${LFORTRAN_NO_TAG_VERSION}")
+set(LFORTRAN_NO_TAG_VERSION 0.0.0) # REMOVE
 
 project(lfortran
         VERSION ${LFORTRAN_NO_TAG_VERSION}

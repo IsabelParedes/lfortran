@@ -33,10 +33,10 @@
 #include <llvm/Transforms/Scalar.h>
 #include <llvm/Transforms/Scalar/GVN.h>
 #include <llvm/Transforms/Scalar/InstSimplifyPass.h>
-#include <llvm/Transforms/Vectorize.h>
+// #include <llvm/Transforms/Vectorize.h>
 #include <llvm/Transforms/IPO.h>
 #include <llvm/Transforms/IPO/AlwaysInliner.h>
-#include <llvm/Transforms/IPO/PassManagerBuilder.h>
+#include <llvm/Passes/PassBuilder.h>
 #include <llvm/Transforms/Instrumentation/AddressSanitizer.h>
 #include <llvm/Transforms/Instrumentation/ThreadSanitizer.h>
 #include <llvm/Transforms/InstCombine/InstCombine.h>
@@ -53,7 +53,7 @@
 #else
 #    include <llvm/Support/TargetRegistry.h>
 #endif
-#include <llvm/Support/Host.h>
+#include <llvm/TargetParser/Host.h>
 #include <libasr/codegen/KaleidoscopeJIT.h>
 
 #include <libasr/codegen/evaluator.h>
